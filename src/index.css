@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.nav li:active{
+  background-color: linear-gradient(to right, #4A6FA5, rgba(74, 111, 165, 0.8));
+  color: white;
+  border-radius: 12px;
+}
+
+.nav li{
+  font-size: 18px;
+  font-weight: 500;
+  color: #303d55;
+}
+
+.menubar button{
+  font-size: 18px;
+  font-weight: 500;
+}
+
+*{
+  font-family: "Inter", sans-serif;
+}
