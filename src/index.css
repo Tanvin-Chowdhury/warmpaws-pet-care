@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+  font-family: "Inter", sans-serif;
+}
 
 .nav li:active{
-  background-color: linear-gradient(to right, #4A6FA5, rgba(74, 111, 165, 0.8));
+  background: linear-gradient(to right, #4A6FA5, rgba(74, 111, 165, 0.8));
   color: white;
   border-radius: 12px;
 }
@@ -19,6 +23,23 @@
   font-weight: 500;
 }
 
-*{
-  font-family: "Inter", sans-serif;
+.details p{
+  color: #64748b;
+}
+
+/* Winter Card Styles */
+.winter-card {
+  background: #FFFFFF;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(74, 111, 165, 0.08);
+  transition: all 0.3s ease;
+}
+
+.winter-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(74, 111, 165, 0.12);
+}
+
+.gradient-winter-hero {
+  background: linear-gradient(135deg, #EEF6FF 0%, #BFD8FF 50%, #FFBFA9 100%);
 }

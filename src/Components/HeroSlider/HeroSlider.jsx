@@ -15,10 +15,10 @@ const HeroSlider = () => {
       navigation
       autoplay={{ delay: 4000, disableOnInteraction: false }}
       loop={true}
-      className="hero-swiper "
+      className="hero-swiper"
     >
       <SwiperSlide>
-        <div className="slide-content slide-1">
+        <div className="hero slide-content slide-1">
           <h1 className="text-5xl lg:text-7xl font-bold text-foreground leading-tight animate-in fade-in slide-in-from-bottom-8">
             keep Your Pets Warm <br /> & Cozy
           </h1>
@@ -29,7 +29,7 @@ const HeroSlider = () => {
       </SwiperSlide>
 
       <SwiperSlide>
-        <div className="slide-content slide-3">
+        <div className="hero slide-content slide-3">
           <h1 className="text-5xl lg:text-7xl font-bold text-foreground leading-tight animate-in fade-in slide-in-from-bottom-8">
             Trusted by Pet <br /> Parents
           </h1>
@@ -40,7 +40,7 @@ const HeroSlider = () => {
       </SwiperSlide>
 
       <SwiperSlide>
-        <div className="slide-content slide-2">
+        <div className="hero slide-content slide-2">
           <h1 className="text-5xl lg:text-7xl font-bold text-foreground leading-tight animate-in fade-in slide-in-from-bottom-8 ">
             Winter Wellness for <br /> Every Pet
           </h1>
@@ -51,7 +51,7 @@ const HeroSlider = () => {
       </SwiperSlide>
 
       <SwiperSlide>
-        <div className="slide-content slide-4">
+        <div className="hero slide-content slide-4">
           <h1 className="text-5xl lg:text-7xl font-bold text-foreground leading-tight animate-in fade-in slide-in-from-bottom-8">
             Your Pet’s Comfort <br /> Comes First
           </h1>
@@ -61,6 +61,7 @@ const HeroSlider = () => {
         </div>
       </SwiperSlide>
     </Swiper>
+    
   );
 };
 
