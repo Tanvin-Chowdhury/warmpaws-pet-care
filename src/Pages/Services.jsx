@@ -1,5 +1,6 @@
 import React, { use } from 'react';
 import ServiceCard from './ServiceCard';
+import ServicePanel from './ServicePanel/ServicePanel';
 
 const servicePromise = fetch('/services.json').then((res) => res.json());
 
