@@ -3,6 +3,9 @@ import HomeLayout from "../Layouts/HomeLayout";
 import ServicePanel from "../Pages/ServicePanel/ServicePanel";
 import HomePage from "../Pages/HomePage/HomePage";
 import MyProfile from "../Pages/MyProfile/MyProfile";
+import Login from "../Pages/Login";
+import Register from "../Pages/Register";
+import AuthLayout from "../Layouts/AuthLayout";
 
 const router = createBrowserRouter([
     {
@@ -10,7 +13,7 @@ const router = createBrowserRouter([
         element: <HomeLayout></HomeLayout>,
         children:[
             {
-                index: true,
+                path: '',
                 element: <HomePage></HomePage>
             },
             {
@@ -24,6 +27,20 @@ const router = createBrowserRouter([
             {
                 path: 'profile',
                 element: <MyProfile></MyProfile>
+            },
+            {
+                path: "auth",
+                element: <AuthLayout></AuthLayout>,
+                children: [
+                    {
+                        path: '/auth/login',
+                        element: <Login></Login>
+                    },
+                    {
+                        path: '/auth/register',
+                        element: <Register></Register>
+                    }
+                ]
             },
             {
                 path: "*",

@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../assets/logo.jpg';
 import { NavLink } from 'react-router';
+import { Link } from "react-router";
 
 const Header = () => {
     return (
@@ -57,13 +58,15 @@ const Header = () => {
 
                 {/* Right Buttons */}
                 <div className="menubar navbar-end gap-2 flex items-center">
-                    <button className="cursor-pointer rounded-3xl px-3 py-1 sm:px-5 sm:py-2 hover:[background-image:linear-gradient(to-r, #FFBFA933, #FFBFA94D)] text-foreground hover:bg-muted transition">
+                    <Link to ='auth/login'
+                    className="cursor-pointer rounded-3xl px-3 py-1 sm:px-5 sm:py-2 hover:bg-[linear-gradient(to_bottom_right,#FFBFA9,rgba(255,191,169,0.8))]">
                         Login
-                    </button>
+                    </Link>
 
-                    <button className="cursor-pointer text-white rounded-3xl px-3 py-1 sm:px-5 sm:py-2 bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 shadow-md hover:shadow-lg transition-all">
+                    <Link to ='auth/register'
+                    className="cursor-pointer text-white rounded-3xl px-3 py-1 sm:px-5 sm:py-2 bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 shadow-md hover:shadow-lg transition-all">
                         Sign Up
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>

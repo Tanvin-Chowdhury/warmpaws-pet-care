@@ -43,3 +43,17 @@
 .gradient-winter-hero {
   background: linear-gradient(135deg, #EEF6FF 0%, #BFD8FF 50%, #FFBFA9 100%);
 }
+
+.winter-card {
+  background: white;
+  box-shadow: 0 4px 24px rgba(74, 111, 165, 0.08);
+}
+
+.winter-card input{
+  border: solid 1px;
+  border-radius: 20px;
+}
+
+.form-f label{
+  margin-bottom: 100px;
+}
