@@ -7,7 +7,6 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import AuthLayout from "../Layouts/AuthLayout";
 import CardDetails from "../Pages/CardDetails";
-import ServiceList from "../Pages/ServiceList";
 import ServicePanelCard from "../Pages/ServicePanel/ServicePanelCard";
 
 const router = createBrowserRouter([
@@ -22,18 +21,8 @@ const router = createBrowserRouter([
 
             {
                 path: 'services',
-                element: <ServicePanel></ServicePanel>,
-                loader: () => fetch("/services.json").then(res => res.json()),
-                children: [
-                    {
-                        index: true,
-                        element: <ServiceList></ServiceList>,
-                    },
-                    {
-                        path: ':id',
-                        element: <ServiceList></ServiceList>,
-                    }
-                ]
+                element: <ServicePanel />,
+                loader: () => fetch("/services.json").then(res => res.json())
             },
 
             {
