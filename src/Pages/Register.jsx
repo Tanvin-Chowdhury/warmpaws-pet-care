@@ -1,12 +1,39 @@
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import logo from '../assets/logo.jpg';
 import { Link } from 'react-router';
 import { Mail, User, Lock, Image, Eye, EyeOff } from 'lucide-react';
+import { AuthContext } from '../Provider/AuthProvider';
+import { Bounce, toast, ToastContainer } from 'react-toastify';
 
 const Register = () => {
 
     const [showPassword, setShowPassword] = useState(false);
+
+    const {createUser, setUser} = use(AuthContext);
+
+    const handleRegister = (e) =>{
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const photo = form.photo.value;
+        const password = form.password.value;
+
+        createUser(email, password)
+        .then(result =>{
+            const user= result.user;
+            setUser(user);
+        })
+        .catch((error) =>{
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            toast.error(`Error: ${errorMessage}`);
+        })
+    }
+
+    
     return (
+         
          <div className="min-h-screen flex mt-30 justify-center">
             <div className="w-full max-w-md">
                 
@@ -21,7 +48,9 @@ const Register = () => {
 
                 {/* Signup Form */}
                 <div className="winter-card p-8">
-                <form className="space-y-5">
+                <form onSubmit={handleRegister} 
+                className="space-y-5">
+
                     {/* Name */}
                     <div className="space-y-2">
                     <label htmlFor="name" className="text-[#1a202c]">Full Name</label>
@@ -33,6 +62,7 @@ const Register = () => {
                         placeholder="Your name"
                         className="w-full pl-12 rounded-xl border-border focus:border-[#4A6FA5] bg-white h-12"
                         required
+                        name = 'name'
                         />
                     </div>
                     </div>
@@ -48,6 +78,7 @@ const Register = () => {
                         placeholder="your@email.com"
                         className="w-full pl-12 rounded-xl border-border focus:border-[#4A6FA5] bg-white h-12"
                         required
+                        name = 'email'
                         />
                     </div>
                     </div>
@@ -61,6 +92,7 @@ const Register = () => {
                         id="photoURL"
                         type="url"
                         placeholder="https://example.com/photo.jpg"
+                        name = 'photo'
                         className="w-full pl-12 rounded-xl border-border focus:border-[#4A6FA5] bg-white h-12"
                         />
                     </div>
@@ -74,6 +106,7 @@ const Register = () => {
                         <input
                         id="password"
                         type='password'
+                        name = 'password'
                         placeholder="Create a strong password"
                         className="w-full pl-12 pr-12 rounded-xl border-border focus:border-[#4A6FA5] bg-white h-12"
                         required
@@ -125,6 +158,13 @@ const Register = () => {
                 </div>
                 </div>
             </div>
+
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                theme="light"
+                transition={Bounce}
+            />
         </div>
     );
 };

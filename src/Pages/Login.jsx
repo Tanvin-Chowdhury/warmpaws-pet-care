@@ -1,11 +1,32 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import logo from '../assets/logo.jpg';
 import { Link } from 'react-router';
 import { Mail, User, Lock, Image, Eye, EyeOff } from 'lucide-react';
+import { AuthContext } from '../Provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Login = () => {
-
+    const {signIn} = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
+
+    const handleLogin = (e) =>{
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        signIn(email, password)
+        .then(result =>{
+            const user = result.user;
+            toast.success("Successfully Logged In");
+        })
+        .catch((error)=>{
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            toast.error(errorCode, errorMessage);
+        })
+    }
+
     return (
          <div className="min-h-screen flex mt-30 justify-center">
             <div className="w-full max-w-md">
@@ -20,8 +41,9 @@ const Login = () => {
                 </div>
 
                 {/* login Form */}
+
                 <div className="winter-card p-8">
-                <form className="space-y-5">
+                <form onSubmit={handleLogin} className="space-y-5">
 
                     {/* Email */}
                     <div className="space-y-2">
@@ -34,6 +56,7 @@ const Login = () => {
                         placeholder="your@email.com"
                         className="w-full pl-12 rounded-xl border-border focus:border-[#4A6FA5] bg-white h-12"
                         required
+                        name = 'email'
                         />
                     </div>
                     </div>
@@ -49,7 +72,9 @@ const Login = () => {
                         placeholder="Create a strong password"
                         className="w-full pl-12 pr-12 rounded-xl border-border focus:border-[#4A6FA5] bg-white h-12"
                         required
+                        password = 'password'
                         />
+                        
                         <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
@@ -58,7 +83,9 @@ const Login = () => {
                         {showPassword ? <EyeOff className="size-5" /> : <Eye className="size-5" />}
                         </button>
                     </div>
-                    <p>Forget Password?</p>
+                        <Link className='hover:text-[#4A6FA5]'>
+                            Forget Password?
+                        </Link>
                     </div>
 
                     {/* Register Button */}

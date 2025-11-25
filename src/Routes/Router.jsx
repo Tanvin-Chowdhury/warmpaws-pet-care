@@ -6,6 +6,9 @@ import MyProfile from "../Pages/MyProfile/MyProfile";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import AuthLayout from "../Layouts/AuthLayout";
+import CardDetails from "../Pages/CardDetails";
+import ServiceList from "../Pages/ServiceList";
+import ServicePanelCard from "../Pages/ServicePanel/ServicePanelCard";
 
 const router = createBrowserRouter([
     {
@@ -16,18 +19,28 @@ const router = createBrowserRouter([
                 path: '',
                 element: <HomePage></HomePage>
             },
+
             {
-                path: '/services',
+                path: 'services',
                 element: <ServicePanel></ServicePanel>,
-                loader: async () => {
-                    const res = await fetch('/services.json');
-                    return res.json();  
-                },
+                loader: () => fetch("/services.json").then(res => res.json()),
+                children: [
+                    {
+                        index: true,
+                        element: <ServiceList></ServiceList>,
+                    },
+                    {
+                        path: ':id',
+                        element: <ServiceList></ServiceList>,
+                    }
+                ]
             },
+
             {
                 path: 'profile',
                 element: <MyProfile></MyProfile>
             },
+
             {
                 path: "auth",
                 element: <AuthLayout></AuthLayout>,
@@ -42,6 +55,12 @@ const router = createBrowserRouter([
                     }
                 ]
             },
+
+            {
+                path: "card-details/:id",
+                element: <CardDetails></CardDetails>
+            },
+
             {
                 path: "*",
                 element: <h2 className="text-center mt-20 text-2xl">Error 404: Page not found</h2> 

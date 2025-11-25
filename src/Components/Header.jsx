@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../assets/logo.jpg';
 import { NavLink } from 'react-router';
 import { Link } from "react-router";
+import { AuthContext } from '../Provider/AuthProvider';
+import { CircleUserRound, User } from 'lucide-react';
+import { toast } from 'react-toastify';
 
 const Header = () => {
+    const {user, logOut} = useContext(AuthContext);
+
+    const handleLogOut = () =>{
+        logOut()
+        .then(()=>{
+            toast.success("Successfully Logged Out")
+        })
+        .catch((error)=>{
+            toast.error("Logout Failed", error);
+        })
+    }
+
     return (
          <div className="navbar bg-white shadow-sm fixed top-0 left-0 w-full z-50">
             <div className='mx-auto w-[1440px] flex items-center justify-between px-4 sm:px-6'>
@@ -36,15 +51,17 @@ const Header = () => {
                     </div>
 
                     {/* Logo */}
-                    <div className='flex cursor-pointer items-center'>
-                        <img src={logo} alt="logo" className='w-10 h-10 sm:w-12 sm:h-12 mr-2'/>
-                        <a className="flex flex-col">
-                            <p className="text-lg sm:text-2xl font-bold text-foreground">WarmPaws</p>
-                            <span className="text-[10px] sm:text-[12px] font-light text-muted-foreground">
-                                Pet Care in Winter
-                            </span>
-                        </a>
-                    </div>
+                    <NavLink to='/'>
+                        <div className='flex cursor-pointer items-center'>
+                            <img src={logo} alt="logo" className='w-10 h-10 sm:w-12 sm:h-12 mr-2'/>
+                            <div className="flex flex-col">
+                                <p className="text-lg sm:text-2xl font-bold text-[#1a202c]">WarmPaws</p>
+                                <span className="text-[10px] sm:text-[12px] font-light text-[#64748b]">
+                                    Pet Care in Winter
+                                </span>
+                            </div>
+                        </div>
+                    </NavLink>
                 </div>
 
                 {/* Center items (Desktop) */}
@@ -58,15 +75,31 @@ const Header = () => {
 
                 {/* Right Buttons */}
                 <div className="menubar navbar-end gap-2 flex items-center">
-                    <Link to ='auth/login'
-                    className="cursor-pointer rounded-3xl px-3 py-1 sm:px-5 sm:py-2 hover:bg-[linear-gradient(to_bottom_right,#FFBFA9,rgba(255,191,169,0.8))]">
-                        Login
-                    </Link>
 
-                    <Link to ='auth/register'
-                    className="cursor-pointer text-white rounded-3xl px-3 py-1 sm:px-5 sm:py-2 bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 shadow-md hover:shadow-lg transition-all">
-                        Sign Up
-                    </Link>
+                    {
+                        user ?  
+                        (
+                            <>
+                            <div className='cursor-pointer'>
+                                <CircleUserRound/>
+                            </div>
+                            <button onClick={handleLogOut} className="cursor-pointer rounded-3xl px-3 py-1 sm:px-5 sm:py-1 hover:bg-[linear-gradient(to_bottom_right,#FFBFA9,rgba(255,191,169,0.8))]">LogOut</button>
+                            </>
+                        )
+                        : (
+                        <>
+                        <Link to ='auth/login'
+                        className="cursor-pointer rounded-3xl px-3 py-1 sm:px-5 sm:py-1 hover:bg-[linear-gradient(to_bottom_right,#FFBFA9,rgba(255,191,169,0.8))]">
+                            Login
+                        </Link>
+
+                        <Link to ='auth/register'
+                        className="cursor-pointer text-white rounded-3xl px-3 py-1 sm:px-5 sm:py-2 bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 shadow-md hover:shadow-lg transition-all">
+                            Sign Up
+                        </Link>
+                        </>
+                        )
+                    }
                 </div>
             </div>
         </div>

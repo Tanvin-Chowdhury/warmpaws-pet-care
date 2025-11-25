@@ -3,6 +3,8 @@ import { Link } from "react-router";
 import React from 'react';
 
 const ServicePanelCard = ({service}) => {
+
+    const {serviceId} = service;
     
     return (
         <div className="winter-card overflow-hidden group rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
@@ -41,16 +43,16 @@ const ServicePanelCard = ({service}) => {
                         <span className="text-sm text-[#64748b] ml-1">/ session</span>
                     </div>
 
-                    <Link to={`/data/${service.serviceid}`}>
-                        <button
-                        className="flex items-center gap-2 rounded-xl text-white px-5 py-2 
-                        bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 
-                         hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 
-                        shadow-md hover:shadow-lg transition-all group/btn">
-                            <span>View Details</span>
-                            <ArrowRight className="text-white size-4 group-hover/btn:translate-x-1 transition-transform" />
-                        </button>
-                    </Link>
+                   
+                    <button
+                    className="flex items-center gap-2 rounded-xl text-white px-5 py-2 
+                    bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 
+                     hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 
+                    shadow-md hover:shadow-lg transition-all group/btn">
+                        <Link to = {`/card-details/${serviceId}`}>View Details</Link>
+                        <ArrowRight className="text-white size-4 group-hover/btn:translate-x-1 transition-transform" />
+                    </button>
+                    
                 </div>
                     <div className="pt-3 border-t border-border">
                         <p className="text-sm text-[#64748b]">

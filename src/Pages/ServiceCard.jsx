@@ -6,10 +6,9 @@ import React from 'react';
     
 // }
 
-
 const ServiceCard = ({service}) => {
     return (
-        <div className="winter-card overflow-hidden group rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 mb-30">
+        <div className="winter-card overflow-hidden group rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 mb-10">
 
             <div className='relative h-56 overflow-hidden'>
                 <img src={service.image} alt="image" className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110'/>
@@ -45,15 +44,14 @@ const ServiceCard = ({service}) => {
                         <span className="text-sm text-[#64748b] ml-1">/ session</span>
                     </div>
 
-                    <Link to={`/service/${service.serviceId}`}>
-                        <button className="flex items-center gap-2 rounded-xl text-white px-5 py-2 
+                        <Link to='/auth/login'
+                        className="flex items-center gap-2 rounded-xl text-white px-5 py-2 
                             bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 
                             hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 
                             shadow-md hover:shadow-lg transition-all group/btn">
                                 <span>View Details</span>
                                 <ArrowRight className="text-white size-4 group-hover/btn:translate-x-1 transition-transform" />
-                        </button>
-                    </Link>
+                        </Link>
 
                 </div>
                     <div className="pt-3 border-t border-border">
@@ -61,8 +59,9 @@ const ServiceCard = ({service}) => {
                             by <span className="font-medium text-[#1a202c]">{service.providerName}</span>
                         </p>
                 </div>
-            
             </div>
+
+            
         </div>
     );
 };

@@ -1,7 +1,12 @@
 import { ShoppingCart, Sparkle } from 'lucide-react';
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const ShopNow = () => {
+    const handleAddtoCart = () =>{
+        toast.success("Successfully added to cart");
+        console.log("ghelo");
+    }
     return (
         <div className='mx-auto w-[1440px] mt-20 mb-40'>
             <div>
@@ -46,7 +51,7 @@ const ShopNow = () => {
                         <div className="flex items-center justify-between pt-2">
                             <span className="text-xl font-bold text-primary">$29</span>
           
-                            <button className="flex py-3 px-2 items-center rounded-xl bg-gradient-to-r from-[#FFBFA9] to-[#FFBFA9]/80 hover:from-[#FFBFA9]/90 hover:to-[#FFBFA9]/70 text-[#1a202c] shadow-md hover:shadow-lg transition-all group/btn">
+                            <button onClick={handleAddtoCart} className="flex py-3 px-2 items-center rounded-xl bg-gradient-to-r from-[#FFBFA9] to-[#FFBFA9]/80 hover:from-[#FFBFA9]/90 hover:to-[#FFBFA9]/70 text-[#1a202c] shadow-md hover:shadow-lg transition-all group/btn">
                                 <ShoppingCart className="size-4 mr-1.5 group-hover/btn:scale-110 transition-transform" />
                                 Add to Cart
                             </button>
@@ -83,7 +88,7 @@ const ShopNow = () => {
                         <div className="flex items-center justify-between pt-2">
                             <span className="text-xl font-bold text-primary">$55</span>
           
-                            <button className="flex py-3 px-2 items-center rounded-xl bg-gradient-to-r from-[#FFBFA9] to-[#FFBFA9]/80 hover:from-[#FFBFA9]/90 hover:to-[#FFBFA9]/70 text-[#1a202c] shadow-md hover:shadow-lg transition-all group/btn">
+                            <button onClick={handleAddtoCart} className="flex py-3 px-2 items-center rounded-xl bg-gradient-to-r from-[#FFBFA9] to-[#FFBFA9]/80 hover:from-[#FFBFA9]/90 hover:to-[#FFBFA9]/70 text-[#1a202c] shadow-md hover:shadow-lg transition-all group/btn">
                                 <ShoppingCart className="size-4 mr-1.5 group-hover/btn:scale-110 transition-transform" />
                                 Add to Cart
                             </button>
@@ -120,7 +125,7 @@ const ShopNow = () => {
                         <div className="flex items-center justify-between pt-2">
                             <span className="text-xl font-bold text-primary">$45</span>
           
-                            <button className="flex py-3 px-2 items-center rounded-xl bg-gradient-to-r from-[#FFBFA9] to-[#FFBFA9]/80 hover:from-[#FFBFA9]/90 hover:to-[#FFBFA9]/70 text-[#1a202c] shadow-md hover:shadow-lg transition-all group/btn">
+                            <button onClick={handleAddtoCart} className="flex py-3 px-2 items-center rounded-xl bg-gradient-to-r from-[#FFBFA9] to-[#FFBFA9]/80 hover:from-[#FFBFA9]/90 hover:to-[#FFBFA9]/70 text-[#1a202c] shadow-md hover:shadow-lg transition-all group/btn">
                                 <ShoppingCart className="size-4 mr-1.5 group-hover/btn:scale-110 transition-transform" />
                                 Add to Cart
                             </button>

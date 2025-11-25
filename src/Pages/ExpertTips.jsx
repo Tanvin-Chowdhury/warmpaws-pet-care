@@ -2,6 +2,8 @@ import { Apple, Bed, Droplets, Heart, House, Shirt, Sparkle } from 'lucide-react
 import React from 'react';
 
 const ExpertTips = () => {
+
+
     return (
         <div className='mx-auto w-[1440px] mt-20 mb-40'>
             <div>

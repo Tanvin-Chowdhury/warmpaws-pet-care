@@ -6,6 +6,7 @@ import ExpertTips from '../ExpertTips';
 import ExpertVets from '../ExpertVets'
 import ShopNow from '../ShopNow';
 import LastSection from '../LastSection';
+import Testimonials from '../Testimonials';
 
 
 const HomePage = () => {
@@ -29,6 +30,11 @@ const HomePage = () => {
                 <section className>
                     <ShopNow></ShopNow>
                 </section>
+
+                <section>
+                    <Testimonials></Testimonials>
+                </section>
+
                 <section>
                     <LastSection></LastSection>
                 </section>

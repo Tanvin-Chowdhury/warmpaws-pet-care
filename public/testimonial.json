@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "name": "Sarah Johnson",
+    "petType": "Golden Retriever",
+    "rating": 5,
+    "comment": "WarmPaws has been a lifesaver this winter! The grooming service kept my dog's coat healthy and the staff is so caring. Highly recommend!",
+    "location": "New York, NY"
+  },
+  {
+    "id": "2",
+    "name": "Michael Chen",
+    "petType": "Persian Cat",
+    "rating": 5,
+    "comment": "The winter health checkup was thorough and professional. Dr. Emily gave us great nutrition advice for the cold months. Our cat is thriving!",
+    "location": "Boston, MA"
+  },
+  {
+    "id": "3",
+    "name": "Emily Rodriguez",
+    "petType": "Husky",
+    "rating": 5,
+    "comment": "Excellent boarding facility! My husky loved staying at WarmNest Lodge. The heated rooms and 24/7 care gave me peace of mind during my trip.",
+    "location": "Chicago, IL"
+  },
+  {
+    "id": "4",
+    "name": "David Thompson",
+    "petType": "Beagle",
+    "rating": 5,
+    "comment": "The winter walking service is fantastic. They use proper safety gear and my beagle always comes back happy and exercised, even on the coldest days!",
+    "location": "Seattle, WA"
+  }
+]
