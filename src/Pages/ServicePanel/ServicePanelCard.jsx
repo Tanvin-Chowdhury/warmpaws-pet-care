@@ -1,5 +1,6 @@
 import { ArrowRight, Star } from 'lucide-react';
 import { Link } from "react-router";
+import CardDetails from '../CardDetails';
 import React from 'react';
 
 const ServicePanelCard = ({service}) => {
@@ -44,14 +45,17 @@ const ServicePanelCard = ({service}) => {
                     </div>
 
                    
-                    <button
-                    className="flex items-center gap-2 rounded-xl text-white px-5 py-2 
-                    bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 
-                     hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 
-                    shadow-md hover:shadow-lg transition-all group/btn">
-                        <Link to = {`/card-details/${serviceId}`}>View Details</Link>
-                        <ArrowRight className="text-white size-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </button>
+                       <Link
+                            to={`/card-details/${serviceId}`} state={{ service }}
+                            className="flex items-center gap-2 rounded-xl text-white px-5 py-2 
+                            bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 
+                            hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 
+                            shadow-md hover:shadow-lg transition-all group"
+                            >
+                            View Details
+                            <ArrowRight className="text-white size-4 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+        
                     
                 </div>
                     <div className="pt-3 border-t border-border">

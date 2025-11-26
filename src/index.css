@@ -45,8 +45,14 @@
 }
 
 .winter-card {
-  background: white;
+  border-radius: 1.5rem;
   box-shadow: 0 4px 24px rgba(74, 111, 165, 0.08);
+  transition: all 0.3s ease;
+}
+
+.winter-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(74, 111, 165, 0.12);
 }
 
 .winter-card input{

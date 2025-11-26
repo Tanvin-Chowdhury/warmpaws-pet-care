@@ -9,6 +9,10 @@ const Register = () => {
 
     const [showPassword, setShowPassword] = useState(false);
 
+    const [error, setError] = useState('');
+
+    const[success, setSuccess] = useState(false);
+
     const {createUser, setUser} = use(AuthContext);
 
     const handleRegister = (e) =>{
@@ -19,16 +23,38 @@ const Register = () => {
         const photo = form.photo.value;
         const password = form.password.value;
 
+        const passwordPattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/
+
+        if(!passwordPattern.test(password)){
+            setError("Password must be at least 6 characters long and include at least one uppercase, one lowercase, and one special character.");
+            return;
+        }
+        else if(!casePattern.test(password)){
+            setError("Password must have at least one uppercase and one lower case character"); 
+        }
+
+        setError('');
+        setSuccess(false);
+
         createUser(email, password)
         .then(result =>{
             const user= result.user;
             setUser(user);
+            toast.success('Welcome to WarmPaws!');
+            setSuccess(true);
+            e.target.reset();
         })
         .catch((error) =>{
             const errorCode = error.code;
             const errorMessage = error.message;
             toast.error(`Error: ${errorMessage}`);
+            setError(errorMessage);
         })
+    }
+
+    const handleTogglePasswordShow = (event) =>{
+        event.preventDefault();
+        setShowPassword(!showPassword);
     }
 
     
@@ -105,7 +131,7 @@ const Register = () => {
                         <Lock className="absolute left-4 top-1/2 -translate-y-1/2 size-5 text-[#64748b]" />
                         <input
                         id="password"
-                        type='password'
+                        type={showPassword ? 'text' : 'password'}
                         name = 'password'
                         placeholder="Create a strong password"
                         className="w-full pl-12 pr-12 rounded-xl border-border focus:border-[#4A6FA5] bg-white h-12"
@@ -113,7 +139,7 @@ const Register = () => {
                         />
                         <button
                         type="button"
-                        onClick={() => setShowPassword(!showPassword)}
+                        onClick={handleTogglePasswordShow}
                         className="absolute right-4 top-1/2 -translate-y-1/2 text-[#64748b] hover:text-[#1a202c] "
                         >
                         {showPassword ? <EyeOff className="size-5" /> : <Eye className="size-5" />}
@@ -128,6 +154,9 @@ const Register = () => {
                     >
                     Create Account
                     </button>
+                    {
+                        error && <p className='text-red-500'>{error}</p>
+                    }
                 </form>
 
                 {/* Divider */}

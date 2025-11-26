@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 const Login = () => {
     const {signIn} = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
+    const [error, setError] = useState('');
 
     const handleLogin = (e) =>{
         e.preventDefault();
@@ -15,16 +16,23 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
+        setError('');
+
         signIn(email, password)
         .then(result =>{
             const user = result.user;
-            toast.success("Successfully Logged In");
+            toast.success("Welcome back to WarmPaws!");
         })
         .catch((error)=>{
             const errorCode = error.code;
             const errorMessage = error.message;
-            toast.error(errorCode, errorMessage);
+            setError(errorCode, errorMessage);
         })
+    }
+
+    const handleTogglePasswordShow = (event) =>{
+        event.preventDefault();
+        setShowPassword(!showPassword);
     }
 
     return (
@@ -43,6 +51,8 @@ const Login = () => {
                 {/* login Form */}
 
                 <div className="winter-card p-8">
+                
+                {/* form */}
                 <form onSubmit={handleLogin} className="space-y-5">
 
                     {/* Email */}
@@ -51,12 +61,12 @@ const Login = () => {
                     <div className="relative">
                         <Mail className="absolute left-4 top-1/2 -translate-y-1/2 size-5 text-[#64748b]" />
                         <input
-                        id="email"
-                        type="email"
-                        placeholder="your@email.com"
-                        className="w-full pl-12 rounded-xl border-border focus:border-[#4A6FA5] bg-white h-12"
-                        required
-                        name = 'email'
+                            id="email"
+                            type="email"
+                            placeholder="your@email.com"
+                            className="w-full pl-12 rounded-xl border-border focus:border-[#4A6FA5] bg-white h-12"
+                            required
+                            name = 'email'
                         />
                     </div>
                     </div>
@@ -67,17 +77,17 @@ const Login = () => {
                     <div className="relative">
                         <Lock className="absolute left-4 top-1/2 -translate-y-1/2 size-5 text-[#64748b]" />
                         <input
-                        id="password"
-                        type='password'
-                        placeholder="Create a strong password"
-                        className="w-full pl-12 pr-12 rounded-xl border-border focus:border-[#4A6FA5] bg-white h-12"
-                        required
-                        password = 'password'
+                            id="password"
+                            type={showPassword ? 'text' : 'password'}
+                            placeholder="Create a strong password"
+                            className="w-full pl-12 pr-12 rounded-xl border-border focus:border-[#4A6FA5] bg-white h-12"
+                            required
+                            password = 'password'
                         />
                         
                         <button
                         type="button"
-                        onClick={() => setShowPassword(!showPassword)}
+                        onClick={handleTogglePasswordShow}
                         className="absolute right-4 top-1/2 -translate-y-1/2 text-[#64748b] hover:text-[#1a202c] "
                         >
                         {showPassword ? <EyeOff className="size-5" /> : <Eye className="size-5" />}
@@ -95,6 +105,10 @@ const Login = () => {
                     >
                     Login
                     </button>
+                    
+                    {
+                        error && <p className='text-red-500'>{error}</p>
+                    }
                 </form>
 
                 {/* Login Link */}

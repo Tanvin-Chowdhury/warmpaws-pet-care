@@ -8,7 +8,6 @@ const ServicePanel = () => {
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [filteredServices, setFilteredServices] = useState(services);
 
-    // Get unique categories
     const categories = ['All', ...new Set(services.map(s => s.category))];
 
     useEffect(() => {
@@ -39,23 +38,23 @@ const ServicePanel = () => {
 
             {/* Category Buttons */}
             <div className='grid grid-cols-6 gap-5 mx-auto max-w-[1440px]'>
-                {categories.map((cat) => (
+                {categories.map((category) => (
                     <button
-                        key={cat}
-                        onClick={() => setSelectedCategory(cat)}
+                        key={category}
+                        onClick={() => setSelectedCategory(category)}
                         className={`px-4 py-3 rounded-2xl font-medium transition-all text-center shadow-md ${
-                            selectedCategory === cat
+                            selectedCategory === category
                                 ? 'bg-[#BFD8FF]/50 text-[#1a202c] shadow-lg'
                                 : 'bg-white text-[#1a202c] hover:bg-[#BFD8FF]/50 hover:shadow-lg'
                         }`}
                     >
-                        {cat}
+                        {category}
                     </button>
                 ))}
             </div>
 
             {/* Service Grid */}
-            <div className='mx-auto max-w-[1440px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-20'>
+            <div className='mx-auto max-w-[1440px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-20 mb-20'>
                 {filteredServices.length > 0 ? (
                     filteredServices.map(service => (
                         <ServicePanelCard key={service.serviceId} service={service} />
@@ -66,6 +65,21 @@ const ServicePanel = () => {
                     </p>
                 )}
             </div>
+
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 mx-auto max-w-[1440px] mb-20">
+                <div className="winter-card p-8 text-center">
+                    <div className="text-4xl font-bold text-[#4A6FA5] mb-2">500+</div>
+                    <p className="text-[#64748b]">Happy Pet Parents</p>
+                </div>
+                <div className="winter-card p-8 text-center">
+                    <div className="text-4xl font-bold text-[#FFBFA9] mb-2">1000+</div>
+                    <p className="text-[#64748b]">Services Completed</p>
+                </div>
+                <div className="winter-card p-8 text-center">
+                    <div className="text-4xl font-bold text-[#4A6FA5] mb-2">4.9★</div>
+                    <p className="text-[#64748b]">Average Rating</p>
+                </div>
+                </div>
         </div>
     );
 };
