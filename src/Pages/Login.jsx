@@ -1,14 +1,17 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import logo from '../assets/logo.jpg';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { Mail, User, Lock, Image, Eye, EyeOff } from 'lucide-react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { toast } from 'react-toastify';
+import { sendPasswordResetEmail } from 'firebase/auth';
 
 const Login = () => {
     const {signIn} = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
+    const emailRef = useRef();
+    const navigate = useNavigate();
 
     const handleLogin = (e) =>{
         e.preventDefault();
@@ -26,13 +29,19 @@ const Login = () => {
         .catch((error)=>{
             const errorCode = error.code;
             const errorMessage = error.message;
-            setError(errorCode, errorMessage);
+            setError(`Invalid Email or Password`);
         })
     }
 
-    const handleTogglePasswordShow = (event) =>{
-        event.preventDefault();
+    const handleTogglePasswordShow = (e) =>{
+        e.preventDefault();
         setShowPassword(!showPassword);
+    }
+
+    const handleForgotPassword = () =>{
+        const email = emailRef.current.value;
+        navigate('/auth/forgot-password', { state: { email } });
+        
     }
 
     return (
@@ -67,6 +76,7 @@ const Login = () => {
                             className="w-full pl-12 rounded-xl border-border focus:border-[#4A6FA5] bg-white h-12"
                             required
                             name = 'email'
+                            ref={emailRef}
                         />
                     </div>
                     </div>
@@ -86,14 +96,16 @@ const Login = () => {
                         />
                         
                         <button
-                        type="button"
-                        onClick={handleTogglePasswordShow}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 text-[#64748b] hover:text-[#1a202c] "
-                        >
-                        {showPassword ? <EyeOff className="size-5" /> : <Eye className="size-5" />}
+                            type="button"
+                            onClick={handleTogglePasswordShow}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 text-[#64748b] hover:text-[#1a202c] "
+                            >
+                            {showPassword ? <EyeOff className="size-5" /> : <Eye className="size-5" />}
                         </button>
+
+                    {/* forget password */}
                     </div>
-                        <Link className='hover:text-[#4A6FA5]'>
+                        <Link className='hover:text-[#4A6FA5]' onClick={handleForgotPassword}>
                             Forget Password?
                         </Link>
                     </div>

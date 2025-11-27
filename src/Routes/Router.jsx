@@ -8,6 +8,7 @@ import Register from "../Pages/Register";
 import AuthLayout from "../Layouts/AuthLayout";
 import CardDetails from "../Pages/CardDetails";
 import ServicePanelCard from "../Pages/ServicePanel/ServicePanelCard";
+import ForgotPassword from "../Pages/ForgetPassword";
 
 const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
                     {
                         path: '/auth/login',
                         element: <Login></Login>
+                    },
+                    {
+                        path: 'forgot-password',  
+                        element: <ForgotPassword></ForgotPassword>
                     },
                     {
                         path: '/auth/register',

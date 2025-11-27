@@ -8,11 +8,8 @@ import { Bounce, toast, ToastContainer } from 'react-toastify';
 const Register = () => {
 
     const [showPassword, setShowPassword] = useState(false);
-
     const [error, setError] = useState('');
-
     const[success, setSuccess] = useState(false);
-
     const {createUser, setUser} = use(AuthContext);
 
     const handleRegister = (e) =>{
@@ -23,14 +20,11 @@ const Register = () => {
         const photo = form.photo.value;
         const password = form.password.value;
 
-        const passwordPattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/
+        const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
 
         if(!passwordPattern.test(password)){
-            setError("Password must be at least 6 characters long and include at least one uppercase, one lowercase, and one special character.");
+            setError("Password must be at least 6 characters long and include at least one uppercase, and one lowercase");
             return;
-        }
-        else if(!casePattern.test(password)){
-            setError("Password must have at least one uppercase and one lower case character"); 
         }
 
         setError('');
@@ -47,7 +41,6 @@ const Register = () => {
         .catch((error) =>{
             const errorCode = error.code;
             const errorMessage = error.message;
-            toast.error(`Error: ${errorMessage}`);
             setError(errorMessage);
         })
     }
@@ -60,7 +53,7 @@ const Register = () => {
     
     return (
          
-         <div className="min-h-screen flex mt-30 justify-center">
+         <div className="min-h-screen flex mt-30 justify-center mb-20">
             <div className="w-full max-w-md">
                 
                 {/* Logo */}
