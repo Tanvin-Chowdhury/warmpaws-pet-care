@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react';
+import React, { use, useContext, useState } from 'react';
 import logo from '../assets/logo.jpg';
 import { Link } from 'react-router';
 import { Mail, User, Lock, Image, Eye, EyeOff } from 'lucide-react';
@@ -9,8 +9,8 @@ const Register = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
-    const[success, setSuccess] = useState(false);
-    const {createUser, setUser} = use(AuthContext);
+    const [success, setSuccess] = useState(false);
+    const {createUser, setUser} = useContext(AuthContext);
 
     const handleRegister = (e) =>{
         e.preventDefault();
@@ -143,7 +143,7 @@ const Register = () => {
                     {/* Register Button */}
                     <button
                     type="submit"
-                    className="w-full text-white rounded-3xl py-4 bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 shadow-md hover:shadow-lg "
+                    className="cursor-pointer w-full text-white rounded-3xl py-4 bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 shadow-md hover:shadow-lg "
                     >
                     Create Account
                     </button>
@@ -166,7 +166,7 @@ const Register = () => {
                 <button
                     type="button"
                     // onClick={handleGoogleSignIn}
-                    className="w-full rounded-3xl py-4 border-1 bg-[#BFD8FF]/50 hover:bg-[#BFD8FF] shadow-md hover:shadow-lg "
+                    className="cursor-pointer w-full rounded-3xl py-4 border-1 bg-[#BFD8FF]/50 hover:bg-[#BFD8FF] shadow-md hover:shadow-lg "
                 >
                     Sign up with Google
                 </button>

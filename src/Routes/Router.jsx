@@ -9,6 +9,7 @@ import AuthLayout from "../Layouts/AuthLayout";
 import CardDetails from "../Pages/CardDetails";
 import ServicePanelCard from "../Pages/ServicePanel/ServicePanelCard";
 import ForgotPassword from "../Pages/ForgetPassword";
+import PrivateRoute from "../Provider/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -22,7 +23,9 @@ const router = createBrowserRouter([
 
             {
                 path: 'services',
-                element: <ServicePanel />,
+                element: <PrivateRoute>
+                    <ServicePanel></ServicePanel>
+                </PrivateRoute>,
                 loader: () => fetch("/services.json").then(res => res.json())
             },
 
@@ -52,7 +55,9 @@ const router = createBrowserRouter([
 
             {
                 path: "card-details/:serviceId",
-                element: <CardDetails></CardDetails>
+                element: <PrivateRoute>
+                    <CardDetails></CardDetails>
+                </PrivateRoute>
             },
 
             {

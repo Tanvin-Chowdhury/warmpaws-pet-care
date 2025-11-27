@@ -4,13 +4,14 @@ import ServicePanelCard from './ServicePanelCard';
 import { Sparkles } from 'lucide-react';
 
 const ServicePanel = () => {
-    const services = useLoaderData(); // all services from loader
+    const services = useLoaderData();
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [filteredServices, setFilteredServices] = useState(services);
 
     const categories = ['All', ...new Set(services.map(s => s.category))];
 
     useEffect(() => {
+        
         if (selectedCategory === 'All') {
             setFilteredServices(services);
         } else {
@@ -21,7 +22,7 @@ const ServicePanel = () => {
     }, [selectedCategory, services]);
 
     return (
-        <div className='mt-30'>
+        <div className='mt-25'>
             {/* Header */}
             <div className="text-center mb-12 space-y-4">
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm mb-2 shadow-md">

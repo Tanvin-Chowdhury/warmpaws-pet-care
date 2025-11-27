@@ -5,9 +5,14 @@ import { Link } from "react-router";
 import { AuthContext } from '../Provider/AuthProvider';
 import { CircleUserRound, User } from 'lucide-react';
 import { toast } from 'react-toastify';
+import Loading from '../Pages/Loading';
 
 const Header = () => {
-    const {user, logOut} = useContext(AuthContext);
+    const {user, logOut, loading} = useContext(AuthContext);
+
+    if(loading){
+        return <Loading></Loading>
+    }
 
     const handleLogOut = () =>{
         logOut()

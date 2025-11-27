@@ -1,10 +1,9 @@
 import React, { useContext, useRef, useState } from 'react';
 import logo from '../assets/logo.jpg';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate} from 'react-router';
 import { Mail, User, Lock, Image, Eye, EyeOff } from 'lucide-react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { toast } from 'react-toastify';
-import { sendPasswordResetEmail } from 'firebase/auth';
 
 const Login = () => {
     const {signIn} = useContext(AuthContext);
@@ -12,6 +11,7 @@ const Login = () => {
     const [error, setError] = useState('');
     const emailRef = useRef();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleLogin = (e) =>{
         e.preventDefault();
@@ -25,6 +25,7 @@ const Login = () => {
         .then(result =>{
             const user = result.user;
             toast.success("Welcome back to WarmPaws!");
+            navigate(`${location.state? location.state : '/'}`);
         })
         .catch((error)=>{
             const errorCode = error.code;
@@ -98,7 +99,7 @@ const Login = () => {
                         <button
                             type="button"
                             onClick={handleTogglePasswordShow}
-                            className="absolute right-4 top-1/2 -translate-y-1/2 text-[#64748b] hover:text-[#1a202c] "
+                            className=" absolute right-4 top-1/2 -translate-y-1/2 text-[#64748b] hover:text-[#1a202c] "
                             >
                             {showPassword ? <EyeOff className="size-5" /> : <Eye className="size-5" />}
                         </button>
@@ -113,7 +114,7 @@ const Login = () => {
                     {/* Register Button */}
                     <button
                     type="submit"
-                    className="w-full text-white rounded-3xl py-4 bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 shadow-md hover:shadow-lg "
+                    className="cursor-pointer w-full text-white rounded-3xl py-4 bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 shadow-md hover:shadow-lg "
                     >
                     Login
                     </button>

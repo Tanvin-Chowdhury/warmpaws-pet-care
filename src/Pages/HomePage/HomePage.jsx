@@ -7,6 +7,7 @@ import ExpertVets from '../ExpertVets'
 import ShopNow from '../ShopNow';
 import LastSection from '../LastSection';
 import Testimonials from '../Testimonials';
+import PrivateRoute from '../../Provider/PrivateRoute';
 
 
 const HomePage = () => {
@@ -16,7 +17,9 @@ const HomePage = () => {
             <NavBar></NavBar>
 
             <section className="bg-gradient-to-b from-white to-[#EEF6FF] py-10">
-                    <PopularServices></PopularServices>
+                   
+                <PopularServices></PopularServices>
+                    
                 </section>
 
                 <section className>

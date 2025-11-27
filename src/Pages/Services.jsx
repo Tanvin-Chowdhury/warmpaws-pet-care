@@ -1,6 +1,7 @@
 import React, { use } from 'react';
-import ServiceCard from './ServiceCard';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router';
+import ServicePanelCard from './ServicePanel/ServicePanelCard';
 
 const servicePromise = fetch('/services.json').then((res) => res.json());
 
@@ -12,18 +13,18 @@ const Services = () => {
             {/* Grid of 3 services */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {services.slice(0, 3).map((service) => (
-                    <ServiceCard key={service.serviceId} service={service} />
+                    <ServicePanelCard key={service.serviceId} service={service} />
                 ))}
             </div>
 
             {/* Button outside the grid */}
             <div className="mt-8 w-full flex justify-center">
-                <button
+                <Link to='services'
                     className="flex items-center rounded-2xl px-8 py-4 text-white bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 shadow-lg hover:shadow-xl transition-all group"
                 >
                     View All Services
                     <ArrowRight className="size-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </button>
+                </Link>
             </div>
         </div>
     );
