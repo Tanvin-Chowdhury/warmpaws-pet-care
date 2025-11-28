@@ -3,9 +3,9 @@ import React from 'react';
 
 const ExpertVets = () => {
     return (
-        <div className='mx-auto w-[1440px] mb-32'>
-            <div>
-                 <div className='mx-auto w-[200px] flex justify-center items-center gap-2 bg-[#b0c9ed]/60 py-2 rounded-full'>
+        <div className='expert-vets-container'>
+            <div className='expert-vets-header'>
+                 <div className='expert-vets-badge bg-[#b0c9ed]/60 py-2 rounded-full'>
                     <Heart className='size-4 text-[#64748b]'/>
                     <p>Our Team</p>
                 </div>
@@ -17,11 +17,11 @@ const ExpertVets = () => {
             </div>
 
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-15'>
+            <div className='expert-vets-grid'>
 
                 {/* 1st */}
-                <div className='shadow-sm bg-white rounded-2xl relative group'>
-                    <div className='relative h-56 overflow-hidden rounded-2xl'>
+                <div className='expert-vet-card group'>
+                    <div className='expert-vet-image-wrapper'>
                         <img
                             src="https://i.postimg.cc/T3ffxgCc/Screenshot-2025-11-21-191138.jpg"
                             alt="image"
@@ -30,14 +30,12 @@ const ExpertVets = () => {
                     </div>
 
                     {/* Rating Badge */}
-                    <div className="absolute top-4 right-4">
-                        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-sm shadow-md">
-                            <Star className="size-4 fill-[#FFBFA9] text-[#FFBFA9]" />
-                            <span className="text-sm font-semibold text-[#1a202c]">4.9</span>
-                        </div>
+                    <div className="expert-vet-rating">
+                        <Star className="size-4 fill-[#FFBFA9] text-[#FFBFA9]" />
+                        <span className="text-sm font-semibold text-[#1a202c]">4.9</span>
                     </div>
 
-                    <div className="p-6 space-y-4">
+                    <div className="expert-vet-content">
                         <div>
                             <h3 className="text-xl font-semibold text-[#1a202c] mb-2 group-hover:text-[#4A6FA5] transition-colors">
                                 Dr. Emily Chen

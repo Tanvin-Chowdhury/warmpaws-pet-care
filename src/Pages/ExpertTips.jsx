@@ -5,22 +5,22 @@ const ExpertTips = () => {
 
 
     return (
-        <div className='mx-auto w-[1440px] mt-20 mb-40'>
+        <div className='expert-tips-container'>
             <div>
-                 <div className='mx-auto w-[200px] flex justify-center items-center gap-2 bg-[#FFBFA9]/50 px-4 py-2 rounded-full'>
+                 <div className='expert-badge'>
                     <Sparkle className='size-4 text-[#FFBFA9]'/>
                     <p>Expert Tips</p>
                 </div>
 
-                <div className='text-center mt-5'>
+                <div className='expert-tips-header'>
                     <h1 className='text-4xl font-bold'>Winter Care Tips for Pets</h1>
                     <p className='text-xl text-[#64748b] mt-2'>Essential advice to help your furry friends thrive during winter</p>
                 </div>
             </div>
 
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-15'>
+            <div className='expert-tips-grid'>
                 {/* 1st */}
-                <div className="winter-card p-6 space-y-4 hover:scale-105 transition-transform border-none rounded-3xl shadow-sm">
+                <div className="expert-card">
                     <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FFBFA9]/20 to-[#FFBFA9]/40 flex items-center justify-center">   
                         <Shirt className='text-[#FFBFA9]'/>
                     </div>
@@ -32,7 +32,7 @@ const ExpertTips = () => {
                 </div>
 
                 {/* 2nd */}
-                <div className="winter-card p-6 space-y-4 hover:scale-105 transition-transform border-none rounded-3xl shadow-sm">
+                <div className="expert-card">
                     <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FFBFA9]/20 to-[#FFBFA9]/40 flex items-center justify-center">    
                         <Heart className='text-[#FFBFA9]'/>
                     </div>
@@ -44,7 +44,7 @@ const ExpertTips = () => {
                 </div>
 
                 {/* 3rd */}
-                <div className="winter-card p-6 space-y-4 hover:scale-105 transition-transform border-none rounded-3xl shadow-sm">
+                <div className="expert-card">
                     <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FFBFA9]/20 to-[#FFBFA9]/40 flex items-center justify-center">     
                         <House className='text-[#FFBFA9]'/>
                     </div>
@@ -56,7 +56,7 @@ const ExpertTips = () => {
                 </div>
 
                 {/* 4th */}
-                <div className="winter-card p-6 space-y-4 hover:scale-105 transition-transform border-none rounded-3xl shadow-sm">
+                <div className="expert-card">
                     <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FFBFA9]/20 to-[#FFBFA9]/40 flex items-center justify-center">
                         <Apple className='text-[#FFBFA9]'/>
                     </div>
@@ -68,7 +68,7 @@ const ExpertTips = () => {
                 </div>
 
                 {/* 5th */}
-                <div className="winter-card p-6 space-y-4 hover:scale-105 transition-transform border-none rounded-3xl shadow-sm">
+                <div className="expert-card">
                     <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FFBFA9]/20 to-[#FFBFA9]/40 flex items-center justify-center">
                         <Droplets className='text-[#FFBFA9]'/>
                     </div>
@@ -80,7 +80,7 @@ const ExpertTips = () => {
                 </div>
 
                 {/* 6th */}
-                <div className="winter-card p-6 space-y-4 hover:scale-105 transition-transform border-none rounded-3xl shadow-sm">
+                <div className="expert-card">
                     <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FFBFA9]/20 to-[#FFBFA9]/40 flex items-center justify-center">
                         <Bed className='text-[#FFBFA9]'/>
                     </div>

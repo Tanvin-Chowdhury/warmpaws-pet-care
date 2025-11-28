@@ -5,30 +5,34 @@ import { toast } from 'react-toastify';
 const ShopNow = () => {
     const handleAddtoCart = () =>{
         toast.success("Successfully added to cart");
-        console.log("ghelo");
     }
+
     return (
-        <div className='mx-auto w-[1440px] mt-20 mb-40'>
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8 mt-20 mb-40">
+
             <div>
-                 <div className='mx-auto w-[200px] flex justify-center items-center gap-2 bg-[#FFBFA9]/50 px-4 py-2 rounded-full'>
-                    <Sparkle className='size-4 text-[#FFBFA9]'/>
+                <div className="mx-auto w-[200px] flex justify-center items-center gap-2 bg-[#FFBFA9]/50 px-4 py-2 rounded-full">
+                    <Sparkle className="size-4 text-[#FFBFA9]" />
                     <p>Shop Now</p>
                 </div>
 
-                <div className='text-center mt-5'>
-                    <h1 className='text-4xl font-bold'>Warm Accessories for Cozy Pets</h1>
-                    <p className='text-xl text-[#64748b] mt-2'>Essential winter gear to keep your pets comfortable and protected</p>
+                <div className="text-center mt-5">
+                    <h1 className="text-4xl font-bold">Warm Accessories for Cozy Pets</h1>
+                    <p className="text-xl text-[#64748b] mt-2">
+                        Essential winter gear to keep your pets comfortable and protected
+                    </p>
                 </div>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-15'>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-15">
 
                 {/* 1st */}
-                <div className='shadow-sm bg-white rounded-2xl relative group'>
-                    <div className='relative h-56 overflow-hidden rounded-2xl'>
+                <div className="shadow-sm bg-white rounded-2xl relative group">
+                    <div className="relative h-56 overflow-hidden rounded-2xl">
                         <img
                             src="https://i.postimg.cc/rpqTRwFQ/photo-1611611579520-1756ad57a3c6.jpg"
                             alt="image"
-                            className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110'
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                         />
                     </div>
 
@@ -50,8 +54,10 @@ const ShopNow = () => {
 
                         <div className="flex items-center justify-between pt-2">
                             <span className="text-xl font-bold text-primary">$29</span>
-          
-                            <button onClick={handleAddtoCart} className="flex py-3 px-2 items-center rounded-xl bg-gradient-to-r from-[#FFBFA9] to-[#FFBFA9]/80 hover:from-[#FFBFA9]/90 hover:to-[#FFBFA9]/70 text-[#1a202c] shadow-md hover:shadow-lg transition-all group/btn">
+                            <button
+                                onClick={handleAddtoCart}
+                                className="flex py-3 px-2 items-center rounded-xl bg-gradient-to-r from-[#FFBFA9] to-[#FFBFA9]/80 hover:from-[#FFBFA9]/90 hover:to-[#FFBFA9]/70 text-[#1a202c] shadow-md hover:shadow-lg transition-all group/btn"
+                            >
                                 <ShoppingCart className="size-4 mr-1.5 group-hover/btn:scale-110 transition-transform" />
                                 Add to Cart
                             </button>
@@ -60,12 +66,12 @@ const ShopNow = () => {
                 </div>
 
                 {/* 2nd */}
-                <div className='shadow-sm bg-white rounded-2xl relative group'>
-                    <div className='relative h-56 overflow-hidden rounded-2xl'>
+                <div className="shadow-sm bg-white rounded-2xl relative group">
+                    <div className="relative h-56 overflow-hidden rounded-2xl">
                         <img
                             src="https://i.postimg.cc/QCgGMLGz/photo-1573682127988-f67136e7f12a.jpg"
                             alt="image"
-                            className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110'
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                         />
                     </div>
 
@@ -81,14 +87,16 @@ const ShopNow = () => {
                                 Heated Pet Bed
                             </h3>
                             <p className="text-sm text-[#64748b] line-clamp-2">
-                               Keep your pet warm and cozy with this self-heating pet bed perfect for winter.
+                                Keep your pet warm and cozy with this self-heating pet bed perfect for winter.
                             </p>
                         </div>
 
                         <div className="flex items-center justify-between pt-2">
                             <span className="text-xl font-bold text-primary">$55</span>
-          
-                            <button onClick={handleAddtoCart} className="flex py-3 px-2 items-center rounded-xl bg-gradient-to-r from-[#FFBFA9] to-[#FFBFA9]/80 hover:from-[#FFBFA9]/90 hover:to-[#FFBFA9]/70 text-[#1a202c] shadow-md hover:shadow-lg transition-all group/btn">
+                            <button
+                                onClick={handleAddtoCart}
+                                className="flex py-3 px-2 items-center rounded-xl bg-gradient-to-r from-[#FFBFA9] to-[#FFBFA9]/80 hover:from-[#FFBFA9]/90 hover:to-[#FFBFA9]/70 text-[#1a202c] shadow-md hover:shadow-lg transition-all group/btn"
+                            >
                                 <ShoppingCart className="size-4 mr-1.5 group-hover/btn:scale-110 transition-transform" />
                                 Add to Cart
                             </button>
@@ -97,12 +105,12 @@ const ShopNow = () => {
                 </div>
 
                 {/* 3rd */}
-                 <div className='shadow-sm bg-white rounded-2xl relative group'>
-                    <div className='relative h-56 overflow-hidden rounded-2xl'>
+                <div className="shadow-sm bg-white rounded-2xl relative group">
+                    <div className="relative h-56 overflow-hidden rounded-2xl">
                         <img
                             src="https://i.postimg.cc/ncnN1PtM/photo-1612811600288-d0f2c50cfcd5.jpg"
                             alt="image"
-                            className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110'
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                         />
                     </div>
 
@@ -124,8 +132,10 @@ const ShopNow = () => {
 
                         <div className="flex items-center justify-between pt-2">
                             <span className="text-xl font-bold text-primary">$45</span>
-          
-                            <button onClick={handleAddtoCart} className="flex py-3 px-2 items-center rounded-xl bg-gradient-to-r from-[#FFBFA9] to-[#FFBFA9]/80 hover:from-[#FFBFA9]/90 hover:to-[#FFBFA9]/70 text-[#1a202c] shadow-md hover:shadow-lg transition-all group/btn">
+                            <button
+                                onClick={handleAddtoCart}
+                                className="flex py-3 px-2 items-center rounded-xl bg-gradient-to-r from-[#FFBFA9] to-[#FFBFA9]/80 hover:from-[#FFBFA9]/90 hover:to-[#FFBFA9]/70 text-[#1a202c] shadow-md hover:shadow-lg transition-all group/btn"
+                            >
                                 <ShoppingCart className="size-4 mr-1.5 group-hover/btn:scale-110 transition-transform" />
                                 Add to Cart
                             </button>
@@ -134,7 +144,7 @@ const ShopNow = () => {
                 </div>
 
             </div>
-            
+
         </div>
     );
 };

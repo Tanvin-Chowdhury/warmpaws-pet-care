@@ -63,3 +63,424 @@
 .form-f label{
   margin-bottom: 100px;
 }
+
+
+/* new */
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+.nav li {
+  font-size: 18px;
+  font-weight: 500;
+  color: #303d55;
+  padding: 8px 16px;
+  border-radius: 12px;
+}
+
+.nav li:active {
+  background: linear-gradient(to right, #4A6FA5, rgba(74,111,165,0.8));
+  color: white;
+}
+
+.gradient-winter-hero {
+  background: linear-gradient(135deg, #eef6ff 0%, #bfd8ff 50%, #ffbfa9 100%);
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.btn-main {
+  background: linear-gradient(to right, #4A6FA5, rgba(74,111,165,0.9));
+  color: white;
+  padding: 12px 22px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: .2s;
+}
+
+.btn-main:hover {
+  opacity: .9;
+}
+
+.expert-vets-container {
+  width: 1440px;
+  margin: 0 auto;
+  margin-bottom: 120px;
+}
+
+/* Section Heading */
+.expert-vets-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Badge */
+.expert-vets-badge {
+  width: 200px;
+  margin: 0 auto;
+  padding: 8px 0;
+  border-radius: 999px;
+  background: rgba(176, 201, 237, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* Grid Layout */
+.expert-vets-grid {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 60px;
+}
+
+/* Card */
+.expert-vet-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  overflow: hidden;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.expert-vet-card:hover img {
+  transform: scale(1.10);
+}
+
+.expert-vet-image-wrapper {
+  height: 230px;
+  overflow: hidden;
+}
+
+.expert-vet-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s ease-in-out;
+}
+
+/* Rating Badge */
+.expert-vet-rating {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(255,255,255,0.95);
+  padding: 6px 12px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.expert-vet-content {
+  padding: 24px;
+}
+
+
+/* Tablets (1024px and smaller) */
+@media (max-width: 1024px) {
+  .expert-vets-container {
+    width: 95%;
+  }
+
+  .expert-vets-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .expert-vet-image-wrapper {
+    height: 200px;
+  }
+}
+
+/* Mobile (768px and smaller) */
+@media (max-width: 768px) {
+  .expert-vets-container {
+    width: 92%;
+  }
+
+  .expert-vets-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .expert-vet-image-wrapper {
+    height: 180px;
+  }
+
+  .expert-vets-header h1 {
+    font-size: 28px;
+  }
+
+  .expert-vets-header p {
+    font-size: 16px;
+  }
+}
+
+/* Small Mobile (480px and below) */
+@media (max-width: 480px) {
+  .expert-vets-container {
+    width: 90%;
+  }
+
+  .expert-vet-rating {
+    padding: 4px 10px;
+  }
+
+  .expert-vet-content {
+    padding: 18px;
+  }
+}
+
+/* Laptop / Tablet Landscape */
+@media (max-width: 1024px) {
+  .grid-responsive {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tablet & Mobile */
+@media (max-width: 768px) {
+  .grid-responsive {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+h1, .title-main {
+  font-size: 42px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+p {
+  font-size: 18px;
+  color: #64748b;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  h1, .title-main {
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 26px;
+  }
+  p {
+    font-size: 16px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  h1, .title-main {
+    font-size: 26px;
+  }
+  h2 {
+    font-size: 22px;
+  }
+  p {
+    font-size: 14px;
+  }
+}
+
+.section {
+  padding: 60px 20px;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 40px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 32px 12px;
+  }
+}
+
+.testimonial-card {
+  padding: 22px;
+  background: white;
+  border-radius: 18px;
+  border: 1px solid #4A6FA5/10;
+  transition: .3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(74,111,165,0.1);
+}
+
+.auth-container {
+  max-width: 480px;
+  margin: 80px auto;
+  padding: 20px;
+}
+
+.auth-container input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+}
+
+.auth-container button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  background: #4A6FA5;
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .auth-container {
+    margin: 40px auto;
+    padding: 10px;
+  }
+}
+
+.last-section .buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .last-section .buttons {
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+.service-card {
+  border-radius: 20px;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  transition: .3s;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+
+/* expert */
+/* ---- Expert Tips Responsive ---- */
+
+.expert-tips-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 5rem auto 8rem auto;
+  padding: 0 1rem;
+}
+
+/* Title Section */
+.expert-tips-header {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.expert-tips-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.expert-tips-header p {
+  font-size: 1.2rem;
+  color: #64748b;
+}
+
+/* Tip Cards Grid */
+.expert-tips-grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* Cards */
+.expert-card {
+  padding: 1.5rem;
+  border-radius: 22px;
+  transition: 0.3s ease;
+  background: #ffffff;
+  box-shadow: 0 4px 24px rgba(74, 111, 165, 0.08);
+}
+
+.expert-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(74, 111, 165, 0.12);
+}
+
+.expert-card h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.expert-card p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* Badge */
+.expert-badge {
+  width: 200px;
+  margin: 0 auto;
+  padding: 0.4rem 1rem;
+  background: rgba(255, 191, 169, 0.5);
+  border-radius: 9999px;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* ---------- RESPONSIVE RULES ---------- */
+
+/* Tablets (≥ 640px) */
+@media (min-width: 640px) {
+  .expert-tips-header h1 {
+    font-size: 2.8rem;
+  }
+
+  .expert-tips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Laptops (≥ 1024px) */
+@media (min-width: 1024px) {
+  .expert-tips-header h1 {
+    font-size: 3rem;
+  }
+
+  .expert-tips-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .expert-tips-container {
+    padding: 0;
+  }
+}
+
+/* Large Screens (≥ 1280px) */
+@media (min-width: 1280px) {
+  .expert-tips-container {
+    max-width: 1440px;
+  }
+}
+
+.footer-text{
+  color: white;
+}

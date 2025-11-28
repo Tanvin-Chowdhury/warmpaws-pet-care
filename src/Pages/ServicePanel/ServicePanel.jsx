@@ -11,7 +11,6 @@ const ServicePanel = () => {
     const categories = ['All', ...new Set(services.map(s => s.category))];
 
     useEffect(() => {
-        
         if (selectedCategory === 'All') {
             setFilteredServices(services);
         } else {
@@ -38,7 +37,9 @@ const ServicePanel = () => {
             </div>
 
             {/* Category Buttons */}
-            <div className='grid grid-cols-6 gap-5 mx-auto max-w-[1440px]'>
+            <div className='mx-auto max-w-[1440px] 
+                            grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 
+                            gap-4 md:gap-5 px-4'>
                 {categories.map((category) => (
                     <button
                         key={category}
@@ -55,7 +56,7 @@ const ServicePanel = () => {
             </div>
 
             {/* Service Grid */}
-            <div className='mx-auto max-w-[1440px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-20 mb-20'>
+            <div className='mx-auto max-w-[1440px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-20 mb-20 px-4'>
                 {filteredServices.length > 0 ? (
                     filteredServices.map(service => (
                         <ServicePanelCard key={service.serviceId} service={service} />
@@ -67,7 +68,9 @@ const ServicePanel = () => {
                 )}
             </div>
 
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 mx-auto max-w-[1440px] mb-20">
+            {/* Stats Section */}
+            <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mx-auto
+                            max-w-[1440px] mb-20 px-4">
                 <div className="winter-card p-8 text-center">
                     <div className="text-4xl font-bold text-[#4A6FA5] mb-2">500+</div>
                     <p className="text-[#64748b]">Happy Pet Parents</p>
@@ -80,7 +83,7 @@ const ServicePanel = () => {
                     <div className="text-4xl font-bold text-[#4A6FA5] mb-2">4.9★</div>
                     <p className="text-[#64748b]">Average Rating</p>
                 </div>
-                </div>
+            </div>
         </div>
     );
 };

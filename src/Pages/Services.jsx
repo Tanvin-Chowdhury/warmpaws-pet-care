@@ -1,12 +1,16 @@
 import React, { use } from 'react';
 import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 import ServicePanelCard from './ServicePanel/ServicePanelCard';
+import Loading from './Loading';
 
-const servicePromise = fetch('/services.json').then((res) => res.json());
 
 const Services = () => {
-    const services = use(servicePromise);
+    const services = useLoaderData();
+    
+    if(!services){
+        <Loading></Loading>
+    }
 
     return (
         <div className="mt-10">

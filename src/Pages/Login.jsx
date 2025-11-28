@@ -47,7 +47,7 @@ const Login = () => {
     }
 
     return (
-         <div className="min-h-screen flex mt-30 justify-center">
+         <div className="flex mt-30 justify-center mb-20">
             <div className="w-full max-w-md">
                 
                 {/* Logo */}

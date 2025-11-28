@@ -4,14 +4,15 @@ import Footer from '../Components/Footer';
 import { Outlet, useNavigation } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 import Loading from '../Pages/Loading';
+import ScrollToTop from '../Components/ScrollToTop';
 
 const HomeLayout = () => {
     const {state} = useNavigation();
     return (
         <div>
+            <ScrollToTop></ScrollToTop>
             <header>
                 <Header></Header>
-                
             </header>
             
             <main>

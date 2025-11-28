@@ -17,10 +17,10 @@ const Footer = () => {
                     </div>
                     <div>
                         <h3 className="text-2xl font-bold">WarmPaws</h3>
-                        <p className="text-sm text-white/80">Pet Care in Winter</p>
+                        <p className="footer-text text-sm text-white">Pet Care in Winter</p>
                     </div>
                     </div>
-                    <p className="text-white/80 leading-relaxed">
+                    <p className="footer-text text-white/50 leading-relaxed">
                     Professional winter pet care services to keep your beloved companions warm, safe, and healthy all season long.
                     </p>
                 </div>
