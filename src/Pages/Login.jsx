@@ -25,7 +25,8 @@ const Login = () => {
         .then(result =>{
             const user = result.user;
             toast.success("Welcome back to WarmPaws!");
-            navigate(`${location.state? location.state : '/'}`);
+            const redirectPath = location.state?.from || '/';
+            navigate(redirectPath, { state: location.state?.service ? { service: location.state.service } : {} });
         })
         .catch((error)=>{
             const errorCode = error.code;

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { updateProfile, updatePassword } from "firebase/auth";
 import { Bounce, toast, ToastContainer } from "react-toastify";
-import logo from '..//../assets/logo.jpg';
+
 
 const MyProfile = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -21,20 +21,20 @@ const MyProfile = () => {
     );
   }
 
-  const handleUpdateProfile = async (e) => {
+  const handleUpdateProfile = (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
       // Update name & photoURL
-      await updateProfile(user, {
+      updateProfile(user, {
         displayName: name,
-        photoURL: photoURL || null,
+        photoURL: photoURL,
       });
 
       // Update password if provided
       if (password) {
-        await updatePassword(user, password);
+        updatePassword(user, password);
       }
 
       toast.success("Profile updated successfully!");
@@ -53,7 +53,7 @@ const MyProfile = () => {
         <h2 className="text-2xl font-bold mb-6 text-center">My Profile</h2>
 
         <img
-          src={user.photoURL || "https://via.placeholder.com/150"}
+          src={user.photoURL}
           alt="User Avatar"
           className="w-32 h-32 rounded-full object-cover shadow-lg"
         />

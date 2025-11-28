@@ -10,6 +10,7 @@ import CardDetails from "../Pages/CardDetails";
 import ServicePanelCard from "../Pages/ServicePanel/ServicePanelCard";
 import ForgotPassword from "../Pages/ForgetPassword";
 import PrivateRoute from "../Provider/PrivateRoute";
+import Loading from "../Pages/Loading";
 
 const router = createBrowserRouter([
     {
@@ -26,7 +27,8 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <ServicePanel></ServicePanel>
                 </PrivateRoute>,
-                loader: () => fetch("/services.json").then(res => res.json())
+                loader: () => fetch("/services.json").then(res => res.json()),
+                hydrateFallbackElement: <Loading></Loading>
             },
 
             {

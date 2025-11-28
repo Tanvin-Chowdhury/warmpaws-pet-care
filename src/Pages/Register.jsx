@@ -1,6 +1,6 @@
-import React, { use, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import logo from '../assets/logo.jpg';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { Mail, User, Lock, Image, Eye, EyeOff } from 'lucide-react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
@@ -10,7 +10,8 @@ const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
-    const {createUser, setUser} = useContext(AuthContext);
+    const {createUser, setUser, updateUser} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleRegister = (e) =>{
         e.preventDefault();
@@ -33,7 +34,15 @@ const Register = () => {
         createUser(email, password)
         .then(result =>{
             const user= result.user;
-            setUser(user);
+            updateUser({ displayName: name, photoURL: photo })
+            .then(() =>{
+                setUser({...user, displayName: name, photoURL: photo});
+                navigate("/");
+            })
+            .catch((error) =>{
+                console.log(error);
+                setUser(user);
+            })
             toast.success('Welcome to WarmPaws!');
             setSuccess(true);
             e.target.reset();

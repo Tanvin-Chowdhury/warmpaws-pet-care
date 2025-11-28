@@ -1,11 +1,15 @@
 import { ArrowRight, Star } from 'lucide-react';
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import CardDetails from '../CardDetails';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const ServicePanelCard = ({service}) => {
 
     const {serviceId} = service;
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+    
     
     return (
         <div className="winter-card overflow-hidden group rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
@@ -46,7 +50,8 @@ const ServicePanelCard = ({service}) => {
 
                    
                        <Link
-                            to={`/card-details/${serviceId}`} state={{ service }}
+                            to={user ? `/card-details/${serviceId}` : '/auth/login'}
+                            state={{ from: `/card-details/${serviceId}`, service }}
                             className="flex items-center gap-2 rounded-xl text-white px-5 py-2 
                             bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 
                             hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 

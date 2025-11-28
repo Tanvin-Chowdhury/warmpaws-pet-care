@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
 import logo from '../assets/logo.jpg';
-import { NavLink } from 'react-router';
-import { Link } from "react-router";
+import { NavLink, Link  } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
-import { CircleUserRound, User } from 'lucide-react';
 import { toast } from 'react-toastify';
 import Loading from '../Pages/Loading';
 
@@ -80,25 +78,27 @@ const Header = () => {
 
                 {/* Right Buttons */}
                 <div className="menubar navbar-end gap-2 flex items-center">
-
                     {
                         user ?  
                         (
                             <>
-                            <div className='cursor-pointer'>
-                                <CircleUserRound/>
+                            <div className='relative group cursor-pointer'>
+                                <Link to={"/profile"}><img src={user.photoURL} alt="user_photo" className='w-12 rounded-full'/></Link>
+                                <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 hidden group-hover:block bg-gray-600 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+                                    {user.displayName}
+                                </span>
                             </div>
                             <button onClick={handleLogOut} className="cursor-pointer rounded-3xl px-3 py-1 sm:px-5 sm:py-1 hover:bg-[linear-gradient(to_bottom_right,#FFBFA9,rgba(255,191,169,0.8))]">LogOut</button>
                             </>
                         )
                         : (
                         <>
-                        <Link to ='auth/login'
+                        <Link to ='/auth/login'
                         className="cursor-pointer rounded-3xl px-3 py-1 sm:px-5 sm:py-1 hover:bg-[linear-gradient(to_bottom_right,#FFBFA9,rgba(255,191,169,0.8))]">
                             Login
                         </Link>
 
-                        <Link to ='auth/register'
+                        <Link to ='/auth/register'
                         className="cursor-pointer text-white rounded-3xl px-3 py-1 sm:px-5 sm:py-2 bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 shadow-md hover:shadow-lg transition-all">
                             Sign Up
                         </Link>

@@ -162,7 +162,7 @@ const CardDetails = () => {
 
                 <button
                   type="submit"
-                  className="w-full rounded-3xl py-4 text-white bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 shadow-lg hover:shadow-xl transition-all"
+                  className="cursor-pointer w-full rounded-3xl py-4 text-white bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 shadow-lg hover:shadow-xl transition-all"
                 >
                   Book Now - ${service.price}
                 </button>
