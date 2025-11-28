@@ -22,7 +22,7 @@ const HeroSlider = () => {
           <h1 className="text-5xl lg:text-7xl font-bold text-foreground leading-tight animate-in fade-in slide-in-from-bottom-8">
             keep Your Pets Warm <br /> & Cozy
           </h1>
-          <p className="text-xl lg:text-2xl text-muted-foreground animate-in fade-in slide-in-from-bottom-8 mt-8 text-[#484b4e]">
+          <p className="text-xl lg:text-2xl text-muted-foreground animate-in fade-in slide-in-from-bottom-8 mt-8 text-[#e9e9ea]">
             Professional winter care services for your beloved companions
           </p>
         </div>
@@ -33,7 +33,7 @@ const HeroSlider = () => {
           <h1 className="text-5xl lg:text-7xl font-bold text-foreground leading-tight animate-in fade-in slide-in-from-bottom-8">
             Trusted by Pet <br /> Parents
           </h1>
-          <p className="text-xl lg:text-2xl text-muted-foreground animate-in fade-in slide-in-from-bottom-8 mt-8 text-[#484b4e]">
+          <p className="text-xl lg:text-2xl text-muted-foreground animate-in fade-in slide-in-from-bottom-8 mt-8 text-[#e9e9ea]">
             Join thousands of happy pets staying warm this winter
           </p>
         </div>
@@ -44,7 +44,7 @@ const HeroSlider = () => {
           <h1 className="text-5xl lg:text-7xl font-bold text-foreground leading-tight animate-in fade-in slide-in-from-bottom-8 ">
             Winter Wellness for <br /> Every Pet
           </h1>
-          <p className="text-xl lg:text-2xl text-muted-foreground animate-in fade-in slide-in-from-bottom-8 mt-8 text-[#484b4e]">
+          <p className="text-xl lg:text-2xl text-muted-foreground animate-in fade-in slide-in-from-bottom-8 mt-8 text-[#e9e9ea]">
             Expert care to keep them healthy and happy all season
           </p>
         </div>
@@ -55,7 +55,7 @@ const HeroSlider = () => {
           <h1 className="text-5xl lg:text-7xl font-bold text-foreground leading-tight animate-in fade-in slide-in-from-bottom-8">
             Your Pet’s Comfort <br /> Comes First
           </h1>
-          <p className="text-xl lg:text-2xl text-muted-foreground animate-in fade-in slide-in-from-bottom-8 mt-8 text-[#484b4e]">
+          <p className="text-xl lg:text-2xl text-muted-foreground animate-in fade-in slide-in-from-bottom-8 mt-8 text-[#e9e9ea]">
             Expert winter grooming, clothing, and wellness services
           </p>
         </div>

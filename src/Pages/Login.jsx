@@ -4,6 +4,12 @@ import { Link, useLocation, useNavigate} from 'react-router';
 import { Mail, User, Lock, Image, Eye, EyeOff } from 'lucide-react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { toast } from 'react-toastify';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import app from '../Firebase/Firebase.config';
+
+const auth = getAuth(app);
+
+const googleProvider = new GoogleAuthProvider();
 
 const Login = () => {
     const {signIn} = useContext(AuthContext);
@@ -26,12 +32,29 @@ const Login = () => {
             const user = result.user;
             toast.success("Welcome back to WarmPaws!");
             const redirectPath = location.state?.from || '/';
-            navigate(redirectPath, { state: location.state?.service ? { service: location.state.service } : {} });
+            navigate(redirectPath, {
+                replace: true,
+                state: location.state?.service ? { service: location.state.service } : {} });
         })
         .catch((error)=>{
             const errorCode = error.code;
             const errorMessage = error.message;
             setError(`Invalid Email or Password`);
+        })
+    }
+
+    const handleGoogleSignIn = () =>{
+        signInWithPopup(auth, googleProvider)
+        .then((result) =>{
+            const user= result.user;
+            const redirectPath = location.state?.from || '/';
+            navigate(redirectPath, {
+                replace: true, 
+                state: location.state?.service ? { service: location.state.service } : {} });
+        })
+        .catch((error) =>{
+            const errorCode = error.code;
+            const errorMessage = error.message;
         })
     }
 
@@ -94,7 +117,8 @@ const Login = () => {
                             placeholder="Create a strong password"
                             className="w-full pl-12 pr-12 rounded-xl border-border focus:border-[#4A6FA5] bg-white h-12"
                             required
-                            password = 'password'
+                            name = 'password'
+
                         />
                         
                         <button
@@ -119,10 +143,21 @@ const Login = () => {
                     >
                     Login
                     </button>
-                    
+
                     {
-                        error && <p className='text-red-500'>{error}</p>
+                        error && <p className='errorText'>{error}</p>
                     }
+                    
+                    {/* Google Signup */}
+                    <button
+                        type="button"
+                        onClick={handleGoogleSignIn}
+                        className="cursor-pointer w-full rounded-3xl py-4 border-1 bg-[#BFD8FF]/50 hover:bg-[#BFD8FF] shadow-md hover:shadow-lg "
+                    >
+                        Sign up with Google
+                    </button>
+
+                    
                 </form>
 
                 {/* Login Link */}

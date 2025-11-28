@@ -4,6 +4,12 @@ import { Link, useNavigate } from 'react-router';
 import { Mail, User, Lock, Image, Eye, EyeOff } from 'lucide-react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { Bounce, toast, ToastContainer } from 'react-toastify';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import app from '../Firebase/Firebase.config';
+
+const auth = getAuth(app);
+
+const googleProvider = new GoogleAuthProvider();
 
 const Register = () => {
 
@@ -12,6 +18,7 @@ const Register = () => {
     const [success, setSuccess] = useState(false);
     const {createUser, setUser, updateUser} = useContext(AuthContext);
     const navigate = useNavigate();
+
 
     const handleRegister = (e) =>{
         e.preventDefault();
@@ -40,7 +47,7 @@ const Register = () => {
                 navigate("/");
             })
             .catch((error) =>{
-                console.log(error);
+                // console.log(error);
                 setUser(user);
             })
             toast.success('Welcome to WarmPaws!');
@@ -54,6 +61,18 @@ const Register = () => {
         })
     }
 
+    const handleGoogleSignIn = () =>{
+            signInWithPopup(auth, googleProvider)
+            .then((result) =>{
+                const user= result.user;
+                navigate("/");
+            })
+            .catch((error) =>{
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            })
+        }
+
     const handleTogglePasswordShow = (event) =>{
         event.preventDefault();
         setShowPassword(!showPassword);
@@ -62,7 +81,7 @@ const Register = () => {
     
     return (
          
-         <div className="min-h-screen flex mt-30 justify-center mb-20">
+         <div className="flex mt-30 justify-center mb-20">
             <div className="w-full max-w-md">
                 
                 {/* Logo */}
@@ -157,24 +176,24 @@ const Register = () => {
                     Create Account
                     </button>
                     {
-                        error && <p className='text-red-500'>{error}</p>
+                        error && <p className='errorText'>{error}</p>
                     }
                 </form>
 
                 {/* Divider */}
                 <div className="relative my-6">
                     <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-border"></div>
+                        <div className="w-full border-t border-border"></div>
                     </div>
                     <div className="relative flex justify-center text-sm">
-                    <span className="px-4 bg-card text-[#64748b]">Or continue with</span>
+                        <span className="px-4 bg-card text-[#64748b]">Or continue with</span>
                     </div>
                 </div>
 
                 {/* Google Signup */}
                 <button
                     type="button"
-                    // onClick={handleGoogleSignIn}
+                    onClick={handleGoogleSignIn}
                     className="cursor-pointer w-full rounded-3xl py-4 border-1 bg-[#BFD8FF]/50 hover:bg-[#BFD8FF] shadow-md hover:shadow-lg "
                 >
                     Sign up with Google

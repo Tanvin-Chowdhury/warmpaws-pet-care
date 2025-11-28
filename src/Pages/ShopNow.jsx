@@ -1,10 +1,23 @@
 import { ShoppingCart, Sparkle } from 'lucide-react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../Provider/AuthProvider';
+import { useNavigate } from 'react-router';
+
 
 const ShopNow = () => {
+    
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+
     const handleAddtoCart = () =>{
-        toast.success("Successfully added to cart");
+         if (user) {
+            // Add to cart logic here
+            toast.success("Successfully added to cart!");
+        } else {
+            // If user not logged in, navigate to login
+            navigate('/auth/login');
+        }
     }
 
     return (

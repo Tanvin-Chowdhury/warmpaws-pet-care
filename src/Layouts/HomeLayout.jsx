@@ -7,7 +7,7 @@ import Loading from '../Pages/Loading';
 import ScrollToTop from '../Components/ScrollToTop';
 
 const HomeLayout = () => {
-    const {state} = useNavigation();
+    const navigation = useNavigation();
     return (
         <div>
             <ScrollToTop></ScrollToTop>
@@ -16,9 +16,9 @@ const HomeLayout = () => {
             </header>
             
             <main>
-               {
-                    state == 'loading' ? <Loading/> : <Outlet></Outlet>
-                }
+               
+                {navigation.state === "loading" ? <Loading /> : <Outlet />}
+                
             </main>
 
             <footer>

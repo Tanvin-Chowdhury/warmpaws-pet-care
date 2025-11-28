@@ -76,7 +76,7 @@ const MyProfile = () => {
 
             <button
               className="mt-2 px-6 py-3 bg-red-500 text-white rounded-xl shadow-md hover:bg-red-600 transition-colors"
-              onClick={() => logOut().catch(err => console.error(err))}
+              onClick={() => logOut().catch(err =>  toast.error("Logout failed"))}
             >
               Logout
             </button>

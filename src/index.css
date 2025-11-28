@@ -64,8 +64,11 @@
   margin-bottom: 100px;
 }
 
+.errorText{
+  color: red;
+}
 
-/* new */
+/* nav */
 * {
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
