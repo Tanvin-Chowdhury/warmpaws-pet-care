@@ -6,7 +6,7 @@ WarmPaws is a cozy winter-themed pet care platform designed to help pet owners k
 
 ## 🌐 Live Website
 
-👉 Live URL: _Add your live URL here_
+👉 Live URL: https://warmpaws-pet-care-25562.web.app
 
 ---
 
