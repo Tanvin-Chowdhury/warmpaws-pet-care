@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { use, useRef, useState } from 'react';
 import logo from '../assets/logo.jpg';
 import { Link, useLocation, useNavigate} from 'react-router';
 import { Mail, User, Lock, Image, Eye, EyeOff } from 'lucide-react';
@@ -8,11 +8,11 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import app from '../Firebase/Firebase.config';
 
 const auth = getAuth(app);
-
 const googleProvider = new GoogleAuthProvider();
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext);
+
+    const {signIn, setLoading} = use(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
     const emailRef = useRef();
@@ -21,11 +21,12 @@ const Login = () => {
 
     const handleLogin = (e) =>{
         e.preventDefault();
+        setError('');
+        setLoading(true);
+
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-
-        setError('');
 
         signIn(email, password)
         .then(result =>{
@@ -34,13 +35,17 @@ const Login = () => {
             const redirectPath = location.state?.from || '/';
             navigate(redirectPath, {
                 replace: true,
-                state: location.state?.service ? { service: location.state.service } : {} });
+                state: location.state?.service && { service: location.state.service }
+            });
         })
         .catch((error)=>{
             const errorCode = error.code;
             const errorMessage = error.message;
             setError(`Invalid Email or Password`);
         })
+        .finally(() => {
+            setLoading(false);
+        });
     }
 
     const handleGoogleSignIn = () =>{
@@ -53,9 +58,12 @@ const Login = () => {
                 state: location.state?.service ? { service: location.state.service } : {} });
         })
         .catch((error) =>{
-            const errorCode = error.code;
             const errorMessage = error.message;
+            toast.error("Google Sign-In failed: " + errorMessage);
         })
+        .finally(() => {
+            setLoading(false);
+        });
     }
 
     const handleTogglePasswordShow = (e) =>{
@@ -65,6 +73,10 @@ const Login = () => {
 
     const handleForgotPassword = () =>{
         const email = emailRef.current.value;
+        if (!email) {
+            toast.warning("Please enter your email first");
+            return;
+        }
         navigate('/auth/forgot-password', { state: { email } });
         
     }
@@ -108,54 +120,54 @@ const Login = () => {
 
                     {/* Password */}
                     <div className="space-y-2">
-                    <label htmlFor="password" className="text-[#1a202c]">Password</label>
-                    <div className="relative">
-                        <Lock className="absolute left-4 top-1/2 -translate-y-1/2 size-5 text-[#64748b]" />
-                        <input
-                            id="password"
-                            type={showPassword ? 'text' : 'password'}
-                            placeholder="Create a strong password"
-                            className="w-full pl-12 pr-12 rounded-xl border-border focus:border-[#4A6FA5] bg-white h-12"
-                            required
-                            name = 'password'
-
-                        />
+                        <label htmlFor="password" className="text-[#1a202c]">Password</label>
+                        <div className="relative">
                         
+                            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 size-5 text-[#64748b]" />
+                            <input
+                                id="password"
+                                type={showPassword ? 'text' : 'password'}
+                                placeholder="Create a strong password"
+                                className="w-full pl-12 pr-12 rounded-xl border-border focus:border-[#4A6FA5] bg-white h-12"
+                                required
+                                name = 'password'
+                            />
+                            
+                            <button
+                                type="button"
+                                onClick={handleTogglePasswordShow}
+                                className=" absolute right-4 top-1/2 -translate-y-1/2 text-[#64748b] hover:text-[#1a202c] "
+                                >
+                                {showPassword ? <EyeOff className="size-5" /> : <Eye className="size-5" />}
+                            </button>
+
+                        {/* forget password */}
+                        </div>
+                            <Link className='hover:text-[#4A6FA5]' onClick={handleForgotPassword}>
+                                Forget Password?
+                            </Link>
+                    </div>
+
+                        {/* Register Button */}
                         <button
-                            type="button"
-                            onClick={handleTogglePasswordShow}
-                            className=" absolute right-4 top-1/2 -translate-y-1/2 text-[#64748b] hover:text-[#1a202c] "
-                            >
-                            {showPassword ? <EyeOff className="size-5" /> : <Eye className="size-5" />}
+                        type="submit"
+                        className="cursor-pointer w-full text-white rounded-3xl py-4 bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 shadow-md hover:shadow-lg "
+                        >
+                        Login
                         </button>
 
-                    {/* forget password */}
-                    </div>
-                        <Link className='hover:text-[#4A6FA5]' onClick={handleForgotPassword}>
-                            Forget Password?
-                        </Link>
-                    </div>
-
-                    {/* Register Button */}
-                    <button
-                    type="submit"
-                    className="cursor-pointer w-full text-white rounded-3xl py-4 bg-gradient-to-r from-[#4A6FA5] to-[#4A6FA5]/80 hover:from-[#4A6FA5]/90 hover:to-[#4A6FA5]/70 shadow-md hover:shadow-lg "
-                    >
-                    Login
-                    </button>
-
-                    {
-                        error && <p className='errorText'>{error}</p>
-                    }
-                    
-                    {/* Google Signup */}
-                    <button
-                        type="button"
-                        onClick={handleGoogleSignIn}
-                        className="cursor-pointer w-full rounded-3xl py-4 border-1 bg-[#BFD8FF]/50 hover:bg-[#BFD8FF] shadow-md hover:shadow-lg "
-                    >
-                        Sign up with Google
-                    </button>
+                        {
+                            error && <p className='errorText'>{error}</p>
+                        }
+                        
+                        {/* Google Signup */}
+                        <button
+                            type="button"
+                            onClick={handleGoogleSignIn}
+                            className="cursor-pointer w-full rounded-3xl py-4 border-1 bg-[#BFD8FF]/50 hover:bg-[#BFD8FF] shadow-md hover:shadow-lg "
+                        >
+                            Sign up with Google
+                        </button>
 
                     
                 </form>

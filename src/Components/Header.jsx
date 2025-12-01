@@ -70,9 +70,20 @@ const Header = () => {
                 {/* Center items (Desktop) */}
                 <div className="nav navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 text-foreground gap-4">
-                        <NavLink to='/' className='hover:bg-[#b0c9ed] px-5 py-2 rounded-3xl text-[16px] lg:text-[18px]'>Home</NavLink>
-                        <NavLink to='/services' className='hover:bg-[#b0c9ed] px-5 py-2 rounded-3xl text-[16px] lg:text-[18px]'>Services</NavLink>
-                        <NavLink to='/profile' className='hover:bg-[#b0c9ed] px-5 py-2 rounded-3xl text-[16px] lg:text-[18px]'>My Profile</NavLink>
+                        <NavLink to='/' 
+                        className={({ isActive }) => `hover:bg-[#b0c9ed] px-5 py-2 rounded-3xl text-[16px] lg:text-[18px] ${isActive ? 'underline' : ''}`}
+                            >Home
+                        </NavLink>
+
+                        <NavLink to='/services' 
+                        className={({ isActive }) => `hover:bg-[#b0c9ed] px-5 py-2 rounded-3xl text-[16px] lg:text-[18px] ${isActive ? 'underline' : ''}`}
+                            >Services
+                        </NavLink>
+
+                        <NavLink to='/profile' 
+                        className={({ isActive }) => `hover:bg-[#b0c9ed] px-5 py-2 rounded-3xl text-[16px] lg:text-[18px] ${isActive ? 'underline' : ''}`}
+                            >My Profile
+                        </NavLink>
                     </ul>
                 </div>
 

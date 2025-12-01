@@ -47,7 +47,6 @@ const Register = () => {
                 navigate("/");
             })
             .catch((error) =>{
-                // console.log(error);
                 setUser(user);
             })
             toast.success('Welcome to WarmPaws!');
@@ -67,10 +66,9 @@ const Register = () => {
                 const user= result.user;
                 navigate("/");
             })
-            .catch((error) =>{
-                const errorCode = error.code;
-                const errorMessage = error.message;
-            })
+            .catch((error) => {
+                toast.error("Google Sign-In failed: " + error.message);
+            });
         }
 
     const handleTogglePasswordShow = (event) =>{
@@ -202,7 +200,7 @@ const Register = () => {
                 {/* Login Link */}
                 <div className="mt-6 text-center text-sm text-[#64748b]">
                     Already have an account?{' '}
-                    <Link to="/auth/login" className="text-[#4A6FA5] hover:underline font-[500px]">
+                    <Link to="/auth/login" className="text-[#4A6FA5] hover:underline font-medium">
                     Login here
                     </Link>
                 </div>

@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link, useLoaderData } from 'react-router';
 import ServicePanelCard from './ServicePanel/ServicePanelCard';
@@ -9,7 +9,7 @@ const Services = () => {
     const services = useLoaderData();
     
     if(!services){
-        <Loading></Loading>
+        return <Loading></Loading>
     }
 
     return (

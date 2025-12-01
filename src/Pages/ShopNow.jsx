@@ -12,10 +12,8 @@ const ShopNow = () => {
 
     const handleAddtoCart = () =>{
          if (user) {
-            // Add to cart logic here
             toast.success("Successfully added to cart!");
         } else {
-            // If user not logged in, navigate to login
             navigate('/auth/login');
         }
     }
